@@ -1,17 +1,29 @@
-from pickle import FALSE
+
 import time
 import random
-# from numpy import random
+import numpy as np
 gameFinished= True
-haveNumnber = True
+
 
 def WeGuess():    
-    rangeList = list(range(1,101))
+    
+    arr  = np.arange(101) 
+    haveNumnber = False
     while haveNumnber == False:
-        print("*** To play think of a number between 1 and a 100 ")
-        print("** And well try to guess it\n\n")
-        if (input("Do you have a Number (Y/N)").upper()) =='Y':
-            yes_no = input("Is your number Higher then 50 (Y/N)").upper
+        numberGuess_arr  = np.arange(101) 
+        print("\n \n")    
+        print("|-----------------------------------------------------|")
+        print("| To play think of a number between 1 and a 100       |")
+        print("| And well try to guess it                            |")
+        print("|-----------------------------Y------------------------|\n")
+        if (input("         Do you have a Number (Y/N)\n").upper()) =='Y':
+            yes_no = input("Is your number Higher then or 50 (Y/N)\n").upper()
+            if yes_no =='Y':            
+                w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr<50))
+                print(w_numberGuess_arr)
+            elif yes_no == 'N':
+                w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr>50))        
+                print(w_numberGuess_arr)   
             
         else:   
             haveNumnber =False
@@ -22,26 +34,23 @@ def UserGuess():
 
 
 
-print("|-------------------|")
-print("|       Welcome     |")
-print("|-------------------|\n")
-print ("Press enter to start")
-while input().upper != 'CLOSE':
-    while gameFinished == True:
 
-        print("|-----------------------------------------------------|")
-        print("|                      Game Mode                      |")
-        print("|-----------------------------------------------------|")
-        print ("| option 1 : You think of a Nuber and we guess it    | ")
-        print ("| option 2 : We think of a Nuber and you guess it    | ")
-        print ("| Close    : Type Close to end the Game              | ")
-        print("|-----------------------------------------------------|\n")
-        gamemode = input("** Choose and Option (1/2)\n")
 
-        if gamemode =='1':
-            WeGuess()
-        elif gamemode =="2":
-            UserGuess()
-        else:
-            print("\nInvalid input, Please Try Agian")
+while gameFinished == True:
+    print("\n \n \n \n\n")
+    print("|-----------------------------------------------------|")
+    print("|                     - Welcome -                     |")
+    print("|                      Game Mode                      |")
+    print("|-----------------------------------------------------|")
+    print("| option 1 : You think of a Number and we guess it    | ")
+    print("| option 2 : We think of a Number and you guess it    | ")
+    print("|-----------------------------------------------------|\n")
+    gamemode = input("** Choose and Option (1/2)\n")
+
+    if gamemode =='1':
+        WeGuess()
+    elif gamemode =="2":
+        UserGuess()
+    else:
+        print("\nInvalid input, Please Try Agian")
 print("Bye")

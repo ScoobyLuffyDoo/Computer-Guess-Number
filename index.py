@@ -20,7 +20,14 @@ def WeGuess():
             yes_no = input("Is your number Higher then or 50 (Y/N)\n").upper()
             if yes_no =='Y':            
                 w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr<50))
-                print(w_numberGuess_arr)
+                yes_no = input("Is your Number Devidable by 2 (Y/N)").upper()
+                if yes_no == 'Y':
+                    w_numberGuess_arr = list (filter (lambda x: (x % 2 == 0), w_numberGuess_arr))
+                elif yes_no =='N':
+
+                    
+
+                    print(w_numberGuess_arr)
             elif yes_no == 'N':
                 w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr>50))        
                 print(w_numberGuess_arr)   

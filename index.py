@@ -8,14 +8,14 @@ gameFinished= True
 def WeGuess():    
     
     arr  = np.arange(101) 
-    haveNumnber = False
-    while haveNumnber == False:
+    have_Number = False
+    while have_Number == False:
         numberGuess_arr  = np.arange(101) 
         print("\n \n")    
         print("|-----------------------------------------------------|")
         print("| To play think of a number between 1 and a 100       |")
         print("| And well try to guess it                            |")
-        print("|-----------------------------Y------------------------|\n")
+        print("|-----------------------------Y-----------------------|\n")
         # Do you have a number
         if (input("         Do you have a Number (Y/N)\n").upper()) =='Y':
             yes_no = input("Is your number Higher then 50 (Y/N)\n").upper()
@@ -30,8 +30,27 @@ def WeGuess():
                     yes_no = input(f"Is your Number Higher then {w_median} (Y/N)\n").upper() 
                     # is number > median 
                     if yes_no == 'Y': 
-                        w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))    
-                        print(w_numberGuess_arr)
+                        w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))                            
+                        yes_no = input(f"Is your Number Three Digits (Y/N)\n").upper()     
+                        # 3 Digits 
+                        if yes_no == 'Y':
+                            w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<max(w_numberGuess_arr))) 
+                            print(f"Your Number is {w_numberGuess_arr}")
+                            have_Number =True
+                        # 3 Digits 
+                        elif yes_no =='N':
+                            w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>max(w_numberGuess_arr)-1))
+                            print(w_numberGuess_arr)    
+                            w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
+                            yes_no = input(f"Is your Number Higher then {w_median} (Y/N)\n").upper()
+                            # is number > median2 
+                            if yes_no == 'Y':
+                                w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))      
+                                print(w_numberGuess_arr)
+                            # is number > median2    
+                            elif yes_no =='N':    
+                                w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
+                                print(w_numberGuess_arr)
                     # is number < median
                     elif yes_no =='N':  
                         w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
@@ -49,10 +68,10 @@ def WeGuess():
                     w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
                     yes_no = input(f"Is your Number Higher then {w_median} (Y/N)").upper()
                     if yes_no == 'Y':
-                        w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr<w_median))    
+                        w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))    
                         print(w_numberGuess_arr)
                     elif yes_no =='N':  
-                        w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr>w_median))    
+                        w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
                         print(w_numberGuess_arr)
     
 
@@ -77,7 +96,7 @@ def WeGuess():
                      
         # Do you have a number    
         else:   
-            haveNumnber =False
+            have_Number =False
 
 
 def UserGuess():

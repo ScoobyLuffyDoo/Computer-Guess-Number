@@ -22,8 +22,8 @@ def WeGuess():
             # Is number > 50 (if)
             if yes_no =='Y':            
                 w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr<50))
-                yes_no = input("Is your Number Dividable by 2 (Y/N)\n").upper()
-                # is number / 2
+                yes_no = input("Is your Number An Even Number (Y/N)\n").upper()
+                # is number even Number
                 if yes_no == 'Y':
                     w_numberGuess_arr = list (filter (lambda x: (x % 2 == 0), w_numberGuess_arr))
                     w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
@@ -39,14 +39,31 @@ def WeGuess():
                             have_Number =True
                         # 3 Digits 
                         elif yes_no =='N':
-                            w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>max(w_numberGuess_arr)-1))
-                            print(w_numberGuess_arr)    
+                            w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>max(w_numberGuess_arr)-1))                              
                             w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
                             yes_no = input(f"Is your Number Higher then {w_median} (Y/N)\n").upper()
                             # is number > median2 
                             if yes_no == 'Y':
                                 w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))      
                                 print(w_numberGuess_arr)
+                                w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
+                                yes_no = input(f"Is your Number Higher then {w_median} (Y/N)\n").upper()
+                                # is number > median 3
+                                if yes_no == 'Y':
+                                    w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))      
+                                    print(w_numberGuess_arr)
+                                    w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
+                                    yes_no = input(f"Is your Number Higher then {w_median} (Y/N)\n").upper()
+                                    if yes_no == 'Y':
+                                        w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))      
+                                        print(w_numberGuess_arr)
+                                    elif yes_no =='N':
+                                        w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
+                                        print(w_numberGuess_arr)    
+                                # is number > median 3
+                                elif yes_no =='N':        
+                                    w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
+                                    print(w_numberGuess_arr)    
                             # is number > median2    
                             elif yes_no =='N':    
                                 w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
@@ -66,10 +83,12 @@ def WeGuess():
                     w_numberGuess_arr = list (filter (lambda x: (x % 2 != 0), w_numberGuess_arr))                
                     print(w_numberGuess_arr)
                     w_median = w_numberGuess_arr[(round(len(w_numberGuess_arr)/2))]
-                    yes_no = input(f"Is your Number Higher then {w_median} (Y/N)").upper()
+                    yes_no = input(f"Is your Number Higher then {w_median} (Y/N)\n").upper()
+                     # is number > median 
                     if yes_no == 'Y':
                         w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr<w_median))    
                         print(w_numberGuess_arr)
+                    # is number > median 
                     elif yes_no =='N':  
                         w_numberGuess_arr = np.delete(w_numberGuess_arr,np.where(w_numberGuess_arr>w_median))    
                         print(w_numberGuess_arr)
@@ -80,7 +99,7 @@ def WeGuess():
             # Is number > 50 (if)                    
             elif yes_no == 'N':
                 w_numberGuess_arr = np.delete(numberGuess_arr,np.where(numberGuess_arr>50))
-                yes_no = input("Is your Number Dividable by 2 (Y/N)").upper()
+                yes_no = input("Is your Number An Even Number (Y/N)").upper()
                 # is number / 2
                 if yes_no == 'Y':
                     w_numberGuess_arr = list (filter (lambda x: (x % 2 == 0), w_numberGuess_arr))

@@ -19,11 +19,11 @@ class guessNumber:
             
         elif i_key.upper() == 'N':    
             o_numberArray = i_numberArray
-            question = "BBBB"
+            question = "The Key is Higher"
             haveNumber = False
             return o_numberArray ,question, haveNumber
         else:
-            question = "XXXX"   
+            question = "They Key is Lower"   
             o_numberArray = i_numberArray
             haveNumber = False
             return (o_numberArray ,question, haveNumber)

@@ -17,14 +17,15 @@ class guessNumber:
             haveNumber = False
             return o_numberArray ,question, haveNumber
             
-        elif i_key.upper() == 'N':    
-            o_numberArray = i_numberArray
-            question = "The Key is Higher"
+        elif self.i_key.upper() == 'N': 
+            w_median = np.median(self.i_numberArray)
+            o_numberArray = np.delete(self.i_numberArray,np.where(self.i_numberArray>=round(w_median)))     
+            question = f"Is Your Number Greater then {w_median}"
             haveNumber = False
             return o_numberArray ,question, haveNumber
         else:
             question = "They Key is Lower"   
-            o_numberArray = i_numberArray
+            o_numberArray = self.i_numberArray
             haveNumber = False
             return (o_numberArray ,question, haveNumber)
          

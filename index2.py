@@ -11,37 +11,55 @@ class guessNumber:
        self.i_median = i_median
 
     def numberFilter(self):
-        if self.i_key.upper() == 'Y':
-            print(self.i_numberArray)
-            o_numberArray = np.delete(self.i_numberArray,np.where(self.i_numberArray<=round(self.i_median)))       
-            new_median = round(np.median(o_numberArray))
-            question = f"Is Your Number Greater then {new_median}"
-            haveNumber = False
-            print(o_numberArray)
-            return (o_numberArray,question,haveNumber,new_median)
-            
-        elif self.i_key.upper() == 'N':  
-            if len(self.i_numberArray) > 2:
-                o_numberArray = np.delete(self.i_numberArray,np.where(self.i_numberArray>round(self.i_median)))   
-                new_median = round(np.median(o_numberArray))
-                question = f"Is Your Number Greater then {new_median}"
-                haveNumber = False
-                print(o_numberArray)
-            elif len(self.i_numberArray)<=2:
-                # Write new logic for last 2 numbers
-                # new_median = round(np.median(self.i_numberArray))
-                # o_numberArray = np.delete(self.i_numberArray,np.where(self.i_numberArray>=round(new_median)))                      
-                # question = f"Is Your Number Greater then {o_numberArray}"
-                # new_median = 1
-                # haveNumber = False
-            return (o_numberArray,question,haveNumber,new_median)
-        else:
-            new_median = np.median(self.i_numberArray)
-            question = f"Is Your Number Greater then {new_median}"   
-            o_numberArray = self.i_numberArray
-            haveNumber = False
-            return (o_numberArray,question,haveNumber,new_median)
-         
+        try:
+            if len(self.i_numberArray)<=2:
+                if len(self.i_numberArray)<=1:
+                    if self.i_key.upper() == 'Y':
+                        question =f"aa you number Greater{self.i_numberArray[1]}"
+                        print(question)
+                        haveNumber = False                     
+                        return (self.i_numberArray,question,haveNumber,new_median)
+                    elif self.i_key.upper() == 'N':    
+                        haveNumber = False
+                        question =f"cc you number Greater{self.i_numberArray[0]}"
+                        print(question)                     
+                        return (self.i_numberArray,question,haveNumber,new_median)
+                else:    
+                    if self.i_key.upper() == 'Y':
+                        question =f"is you number Greater Then{self.i_numberArray[1]}"
+                        print(question)
+                        haveNumber = False                     
+                        return (self.i_numberArray,question,haveNumber,new_median)
+                    elif self.i_key.upper() == 'N':    
+                        haveNumber = False
+                        question =f"is you number Greater Then{self.i_numberArray[0]}"
+                        print(question)                     
+                        return (self.i_numberArray,question,haveNumber,new_median)
+            else:    
+                if self.i_key.upper() == 'Y':
+                    print(self.i_numberArray)
+                    o_numberArray = np.delete(self.i_numberArray,np.where(self.i_numberArray<=round(self.i_median)))       
+                    new_median = round(np.median(o_numberArray))
+                    question = f"Is Your Number Greater then {new_median}"
+                    haveNumber = False
+                    print(o_numberArray)
+                    return (o_numberArray,question,haveNumber,new_median)            
+                elif self.i_key.upper() == 'N':              
+                        o_numberArray = np.delete(self.i_numberArray,np.where(self.i_numberArray>round(self.i_median)))   
+                        new_median = round(np.median(o_numberArray))
+                        question = f"Is Your Number Greater then {new_median}"
+                        haveNumber = False
+                        print(o_numberArray)        
+                        return (o_numberArray,question,haveNumber,new_median)
+                else:
+                    new_median = np.median(self.i_numberArray)
+                    question = f"Is Your Number Greater then {new_median}"   
+                    o_numberArray = self.i_numberArray
+                    haveNumber = False
+                    return (o_numberArray,question,haveNumber,new_median)
+        except:
+            question = 'Error Please try again'                    
+            return (self.i_numberArray,question,True,0)
     
 
 

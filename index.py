@@ -3,7 +3,7 @@ import random
 import numpy as np
 
 
-w_numberGuess_arr  = np.arange(101)
+w_numberGuess_arr  = np.arange(501)
 haveNumber =False
 yes_no = ' '
 w_median =0
@@ -50,10 +50,8 @@ class guessNumber:
 print("\n \n \n \n\n")
 print("|-----------------------------------------------------|")
 print("|                     - Welcome -                     |")
-print("|                      Game Mode                      |")
+print("|     To play Think of a number between 1 and 500     |")
 print("|-----------------------------------------------------|")
-print("| option 1 : You think of a Number and we guess it    | ")
-print("|-----------------------------------------------------|\n")
 gamemode = input("** Press Enter Key to start  (1/2)\n")
 w_numberGuess_arr = guessNumber(w_numberGuess_arr,' ',0).initial_Filter()
 while haveNumber == False:    
